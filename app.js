@@ -57,12 +57,12 @@
     { threshold: 0.15 }
   );
 
-  const STAGGER_GROUP_SIZE = 4; // number of items per visual row for delay staggering
+  const ITEMS_PER_ANIMATION_GROUP = 4; // number of items per visual row for delay staggering
 
   targets.forEach(function (el, i) {
     el.classList.add('js-reveal');
     // Stagger cards within the same grid
-    el.style.transitionDelay = (i % STAGGER_GROUP_SIZE) * 0.08 + 's';
+    el.style.transitionDelay = (i % ITEMS_PER_ANIMATION_GROUP) * 0.08 + 's';
     observer.observe(el);
   });
 })();
