@@ -57,7 +57,7 @@
     { threshold: 0.15 }
   );
 
-  var STAGGER_GROUP_SIZE = 4; // number of items per visual row for delay staggering
+  const STAGGER_GROUP_SIZE = 4; // number of items per visual row for delay staggering
 
   targets.forEach(function (el, i) {
     el.classList.add('js-reveal');
@@ -84,7 +84,7 @@
     // keeping user input safely inert in the DOM.
     const thanks = document.createElement('p');
     const msg = document.createTextNode(
-      '\u201CYou\u2019re on the list! We\u2019ll be in touch at ' + email + '.'
+      'You\u2019re on the list! We\u2019ll be in touch at ' + email + '.'
     );
     thanks.appendChild(msg);
     thanks.style.cssText =
