@@ -57,10 +57,12 @@
     { threshold: 0.15 }
   );
 
+  var STAGGER_GROUP_SIZE = 4; // number of items per visual row for delay staggering
+
   targets.forEach(function (el, i) {
     el.classList.add('js-reveal');
     // Stagger cards within the same grid
-    el.style.transitionDelay = (i % 4) * 0.08 + 's';
+    el.style.transitionDelay = (i % STAGGER_GROUP_SIZE) * 0.08 + 's';
     observer.observe(el);
   });
 })();
@@ -78,10 +80,13 @@
 
     if (!email) return;
 
-    // Replace the form with a thank-you message
+    // Sanitize by constructing the message with textContent (never innerHTML),
+    // keeping user input safely inert in the DOM.
     const thanks = document.createElement('p');
-    thanks.textContent =
-      'You\u2019re on the list! We\u2019ll be in touch at ' + email + '.';
+    const msg = document.createTextNode(
+      '\u201CYou\u2019re on the list! We\u2019ll be in touch at ' + email + '.'
+    );
+    thanks.appendChild(msg);
     thanks.style.cssText =
       'font-size:1.125rem;font-weight:600;color:#5b6ef5;margin-top:0.5rem;';
 
